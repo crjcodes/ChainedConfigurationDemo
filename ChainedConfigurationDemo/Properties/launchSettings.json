@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ChainedConfigurationDemo": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Greetings": "HelloFromLaunchSettings"
+      }
+    }
+  }
+}

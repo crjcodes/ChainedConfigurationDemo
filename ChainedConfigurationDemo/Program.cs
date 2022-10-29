@@ -5,7 +5,12 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics.Eventing.Reader;
 
 Console.WriteLine("Starting demo");
-Console.WriteLine("Arguments: ({0})", string.Join(",", args));
+Console.WriteLine("\nArguments:");
+
+foreach (var arg in args)
+{
+    Console.WriteLine(arg);
+}
 
 var hostBuilder = Host.CreateDefaultBuilder(args)
     .ConfigureLogging((hostContext, logBuilder) =>
@@ -20,13 +25,13 @@ var hostBuilder = Host.CreateDefaultBuilder(args)
     {
         // log the configuration after all chained configurations are applied
         hostContext.LogConfiguration();
+
+        Console.WriteLine("\nPress Ctrl-C to stop the host and exit.\n");
     });
 
-Console.WriteLine("Press Ctrl-C to stop the host and exit.");
 
 var builtHost = hostBuilder.Build();
-
-
 builtHost.Run();
+
 
 
