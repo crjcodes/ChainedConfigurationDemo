@@ -3,7 +3,9 @@
     "ChainedConfigurationDemo": {
       "commandName": "Project",
       "environmentVariables": {
-        "Greetings": "HelloFromLaunchSettings"
+        "ConnectionString": "Endpoint=https://example-01.azconfig.io;Id=7iar-l4-s0:ySNhR8id1rttG0X2AGsc;Secret=TXxfClGs33d3Co3oLtjz0IDsna7YnTd6RHBladDh/TU=",
+        "Endpoint": "https://example-01.azconfig.io",
+        "Greeting": "HelloFromLaunchSettings"
       }
     }
   }

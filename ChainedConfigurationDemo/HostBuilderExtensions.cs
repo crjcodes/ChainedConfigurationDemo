@@ -9,7 +9,7 @@ public static class HostBuilderExtensions
     {
         var greeting = hostContext.Configuration.GetValue<string>("Greeting") ?? string.Empty;
 
-        Console.WriteLine("Greeting = {0}", greeting);
+        Console.WriteLine("\nIn the end, the greeting is \"{0}\"", greeting);
 
         return hostContext;
     }

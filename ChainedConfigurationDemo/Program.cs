@@ -1,18 +1,33 @@
-﻿using ChainedConfigurationDemo;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics.Eventing.Reader;
+using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+using ChainedConfigurationDemo;
 
-Console.WriteLine("Starting demo");
-Console.WriteLine("\nArguments:");
-
-foreach (var arg in args)
-{
-    Console.WriteLine(arg);
-}
+Console.WriteLine("Starting demo...");
 
 var hostBuilder = Host.CreateDefaultBuilder(args)
+    .ConfigureAppConfiguration((hostContext, config) =>
+    {
+        // if you have Azure set up, you can uncomment this section
+        // See README for details
+
+        //config.AddAzureAppConfiguration(options =>
+        //{
+        //    // This is a development-only approach used only locally
+        //    // Here, the connection string to the read-only configuration property is set as a 
+        //    // Windows user environment variable and read in from the environment here
+
+        //    options
+        //        .Connect(Environment.GetEnvironmentVariable("AZURE_APP_CONFIGURATION"))
+
+        //        .Select(KeyFilter.Any, LabelFilter.Null)
+
+        //        // if exists, overrides existing value, if any, from previous line
+        //        .Select(KeyFilter.Any, "chained-configuration") 
+        //        ;
+        //});
+    })
     .ConfigureLogging((hostContext, logBuilder) =>
     {
         // ignore Microsoft Debug and Informational logging for this demo
