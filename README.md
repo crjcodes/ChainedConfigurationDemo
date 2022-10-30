@@ -89,7 +89,7 @@ With the AzureAppConfiguration section of `Program.cs` commented, inside Visual 
 
 With Azure commented out, and no DOTNET_ENVIRONMENT set, not launching from Visual Studio's launchSettings,
 
-![Commented App Settings](doc/CommentedAppSettings.png)
+![Commented App Settings](doc/CommentedAppsettings.png)
 
 ```
  ~/source/repos/ChainedConfigurationDemo/pub  master
@@ -106,7 +106,10 @@ Press Ctrl-C to stop the host and exit.
 
 ### 3. AppSettings.{{DOTNET_ENVIRONMENT}}.json
 
-This app is configured such that if the DOTNET_ENVIRONMENT is not set, or is set to something other than "Development" or "Test", the configuration building falls through to appsettings.json if the property exists in it, and so on -- like, for example, if DOTNET_ENVIRONMENT is set to "Production".  
+This app is configured such that if the DOTNET_ENVIRONMENT is not set, 
+or is set to something other than "Development" or "Test", 
+the configuration building falls through to appsettings.json 
+(if the property exists in appsettings.json), and so on -- like, for example, if DOTNET_ENVIRONMENT is set to "Production".  
 
 #### 3a. AppSettings.Development.json
 
@@ -186,21 +189,19 @@ Press Ctrl-C to stop the host and exit.
 
 (make sure to `unset Greeting` if in the cli environment for all other cases)
 
-## Gotchas
-
-- A `dotnet run` from the project directory will not catch the appsettings.json, hence the different running for that step
-
-
 # Configuration
 
-You will need your own Azure subscription.  
+For the optional Azure use case, you will need 
 
-This demo uses the read-only connection string from my Azure App Config, pulled in as an environment variable
+1. To uncomment the Azure section in Program.cs
+1. Your own Azure subscription
+1. An Azure App Configuration property called "Greeting"
+1. A way for your local box to access the Azure App Config property
+
+For #4, this demo uses the read-only connection string from my Azure App Config, pulled in as an environment variable
 from my local system.
 
-To get this working for Azure, you'll need your own subscription and to setup the same, with the connection in an environment variable.
 
-Alternatively, comment out the `AddAzure...` section in Program.cs.
 
 
 
